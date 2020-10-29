@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Receipt;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Null_;
 
 class RecriptsController extends Controller
 {
@@ -16,7 +18,13 @@ class RecriptsController extends Controller
     }
     public function show($id)
     {
-        if($id == 10)
+        $temp = Receipt::find($id);
+        if($temp == null)
+        {
+            return "404 no found";
+        }
+        $receipt = $temp->toArray();
+        /*if($id == 10)
         {
 
             $period_name = "1080102";  //$period_name = "";
@@ -29,9 +37,9 @@ class RecriptsController extends Controller
             $a_ID = "NULL";  //$a_ID = "";
             $number = "NULL";  //$number = "";
         }
-        $data = compact('period_name','a_ID','number');
+        $data = compact('period_name','a_ID','number');*/
 
-        return view('receipts.show',$data);/*->with(["n_id" => $id,
+        return view('receipts.show',$receipt);/*->with(["n_id" => $id,
                                             "p_name"=>$period_name,
                                             "a_ID"=>$a_ID,
                                             "num"=>$number]);*/

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reward;
 use Illuminate\Http\Request;
 
 class RewardsController extends Controller
@@ -16,7 +17,13 @@ class RewardsController extends Controller
     }
     public function show($id)
     {
-        if($id == 10)
+        $temp = Reward::find($id);
+        if($temp == null)
+        {
+            return "404 no found";
+        }
+        $reward = $temp->toArray();
+        /*if($id == 10)
         {
             $data = [];
             $data['a_name'] = "頭獎";  //$a_name = "";
@@ -29,9 +36,9 @@ class RewardsController extends Controller
             $data['a_name'] = "NULL";  //$a_name = "";
             $data['rule'] = "NULL";  //$rule = "";
             $data['money'] = "NULL";  //$money = "";
-        }
+        }*/
 
-        return view('rewards.show',$data);/*->with(["a_ID" => $id,
+        return view('rewards.show',$reward);/*->with(["a_ID" => $id,
                                             "a_name"=>$a_name,
                                             "rule"=>$rule,
                                             "money"=>$money]);*/
