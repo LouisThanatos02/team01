@@ -17,9 +17,9 @@ class RewardsTableSeeder extends Seeder
     {
         //
         DB::table('rewards')->insert([
-            "period_name" => "2000102",
-            "a_ID" => "1",
-            "number" => "09530169"
+            "a_name" => "超特別獎",
+            "rule" => "發票八位數號碼與中獎號碼完全相同者，獎金新臺幣一千兆",
+            "money" => "10000000"
         ]);
     }
 }
