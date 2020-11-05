@@ -1,0 +1,43 @@
+From f13545bef49735df5432de6ab9fae42d6a661fe5 Mon Sep 17 00:00:00 2001
+From: Louis <jimmy963909827@gmail.com>
+Date: Thu, 29 Oct 2020 11:28:48 +0800
+Subject: [PATCH] seed fix
+
+---
+ database/seeders/DatabaseSeeder.php     | 2 +-
+ database/seeders/RewardsTableSeeder.php | 6 +++---
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/database/seeders/DatabaseSeeder.php b/database/seeders/DatabaseSeeder.php
+index 8ee845a..a0d9715 100644
+--- a/database/seeders/DatabaseSeeder.php
++++ b/database/seeders/DatabaseSeeder.php
+@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
+     public function run()
+     {
+         // \App\Models\User::factory(10)->create();
+-        $this->call(ReciptsTableSeeder::class);
++        $this->call(ReceiptsTableSeeder::class);
+         $this->call(RewardsTableSeeder::class);
+     }
+ }
+diff --git a/database/seeders/RewardsTableSeeder.php b/database/seeders/RewardsTableSeeder.php
+index 48765fd..5e22f28 100644
+--- a/database/seeders/RewardsTableSeeder.php
++++ b/database/seeders/RewardsTableSeeder.php
+@@ -17,9 +17,9 @@ class RewardsTableSeeder extends Seeder
+     {
+         //
+         DB::table('rewards')->insert([
+-            "period_name" => "2000102",
+-            "a_ID" => "1",
+-            "number" => "09530169"
++            "a_name" => "超特別獎",
++            "rule" => "發票八位數號碼與中獎號碼完全相同者，獎金新臺幣一千兆",
++            "money" => "10000000"
+         ]);
+     }
+ }
+-- 
+2.28.0.windows.1
+

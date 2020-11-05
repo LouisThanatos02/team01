@@ -17,7 +17,8 @@ class RewardsController extends Controller
     }
     public function show($id)
     {
-        $temp = Reward::find($id);
+        //$temp = Reward::find($id);
+        $temp = Reward::where('money','10000000')->first();
         if($temp == null)
         {
             return "404 no found";

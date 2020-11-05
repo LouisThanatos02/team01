@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Receipt;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Null_;
 
 class RecriptsController extends Controller
 {
@@ -18,11 +17,12 @@ class RecriptsController extends Controller
     }
     public function show($id)
     {
-        $temp = Receipt::find($id);
-        if($temp == null)
+        $temp = Receipt::findOrFail($id);
+        //$temp = Receipt::where('number','09530169')->first();
+        /*if($temp == null)
         {
             return "404 no found";
-        }
+        }*/
         $receipt = $temp->toArray();
         /*if($id == 10)
         {
