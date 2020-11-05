@@ -22,6 +22,6 @@
 </head>
 <body>
 <h1>這是新增一個獎勵資料表單的 view</h1>
-<a href="<?php echo route('receipts.index');?>">回到發票的 view</a>
+<a href="<?php echo route('receipts.index');?>">回到發票的 view</a><br/>
 </body>
 </html>

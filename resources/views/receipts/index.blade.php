@@ -22,22 +22,24 @@
 </head>
 <body>
 <h1>這是預備顯示所有發票資料表單的 view</h1>
+<a style="color: deeppink" href="<?php echo route('rewards.index');?>">回到獎勵的 view</a>
+<br>
 <table class="text-center">
     <tr>
-        <td>編號</td>
-        <td>期數</td>
-        <td>獎項</td>
-        <td>號碼</td>
+        <td style="color: crimson">編號</td>
+        <td style="color: deepskyblue">期數</td>
+        <td style="color: blueviolet">獎項</td>
+        <td style="color: steelblue">號碼</td>
     </tr>
     @foreach($receipts as $receipt)
         <tr>
             <td>{{$receipt->id}}</td>
-            <td>{{$receipt->period_name}}</td>
+            <td>{{substr($receipt->period_name,0,3)}}
+            {{substr($receipt->period_name,3)}}</td>
             <td>{{$receipt->a_ID}}</td>
             <td>{{$receipt->number}}</td>
         </tr>
     @endforeach
 </table>
-<a href="<?php echo route('rewards.index');?>">回到獎勵的 view</a>
 </body>
 </html>

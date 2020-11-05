@@ -22,6 +22,7 @@
 </head>
 <body>
 <h1>這是修改單筆獎勵資料表單的 view</h1>
+<a href="<?php echo route('receipts.index');?>">回到發票的 view</a><br/>
 <table class="text-center">
     <tr>
         <td>編號</td>
@@ -37,6 +38,6 @@
     </tr>
 </table>
 <br>
-<a href="<?php echo route('receipts.index');?>">回到發票的 view</a>
+
 </body>
 </html>

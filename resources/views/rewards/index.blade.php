@@ -22,12 +22,13 @@
 </head>
 <body>
 <h1>這是預備顯示所有獎勵資料表單的 view</h1>
+<a style="color: deeppink" href="<?php echo route('receipts.index');?>">回到發票的 view<br/></a>
 <table class="text-center">
     <tr>
-        <td>編號</td>
-        <td>獎項</td>
-        <td>規則</td>
-        <td>獎金</td>
+        <td style="color: crimson;">編號</td>
+        <td style="color: deepskyblue">獎項</td>
+        <td style="color: blueviolet">規則</td>
+        <td style="color: steelblue">獎金</td>
     </tr>
     @foreach($rewards as $reward)
         <tr>
@@ -38,6 +39,5 @@
         </tr>
     @endforeach
 </table>
-<a href="<?php echo route('receipts.index');?>">回到發票的 view</a>
 </body>
 </html>

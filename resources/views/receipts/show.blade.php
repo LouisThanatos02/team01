@@ -22,6 +22,7 @@
 </head>
 <body>
 <h1>這是顯示一筆發票資料表單的 view</h1>
+<a href="<?php echo route('rewards.index');?>">回到獎勵的 view</a><br/>
 <table class="text-center">
     <tr>
         <td>編號</td>
@@ -36,6 +37,6 @@
         <td>{{$number}}</td>
     </tr>
 </table>
-<br><a href="<?php echo route('rewards.index');?>">回到獎勵的 view</a>
+<br>
 </body>
 </html>
