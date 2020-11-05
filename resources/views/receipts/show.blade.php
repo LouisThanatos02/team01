@@ -22,9 +22,20 @@
 </head>
 <body>
 <h1>這是顯示一筆發票資料表單的 view</h1>
-期數 : {{$period_name}}<br>
-獎項 : {{$a_ID}}<br>
-號碼 : {{$number}}<br><br>
-<a href="<?php echo route('rewards.index');?>">回到獎勵的 view</a>
+<table class="text-center">
+    <tr>
+        <td>編號</td>
+        <td>期數</td>
+        <td>獎項</td>
+        <td>號碼</td>
+    </tr>
+    <tr>
+        <td>{{$id}}</td>
+        <td>{{$period_name}}</td>
+        <td>{{$a_ID}}</td>
+        <td>{{$number}}</td>
+    </tr>
+</table>
+<br><a href="<?php echo route('rewards.index');?>">回到獎勵的 view</a>
 </body>
 </html>

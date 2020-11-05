@@ -22,9 +22,20 @@
 </head>
 <body>
 <h1>這是顯示一筆獎勵資料表單的 view</h1>
-獎項 : {{$a_name}}<br>
-說明 : {{$rule}}<br>
-獎金 : {{$money}}<br><br>
-<a href="<?php echo route('receipts.index');?>">回到發票的 view</a>
+<table class="text-center">
+    <tr>
+        <td>編號</td>
+        <td>獎項</td>
+        <td>規則</td>
+        <td>獎金</td>
+    </tr>
+    <tr>
+        <td>{{$id}}</td>
+        <td>{{$a_name}}</td>
+        <td>{{$rule}}</td>
+        <td>{{$money}}</td>
+    </tr>
+</table>
+<br><a href="<?php echo route('receipts.index');?>">回到發票的 view</a>
 </body>
 </html>

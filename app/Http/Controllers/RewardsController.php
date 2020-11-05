@@ -3,55 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reward;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RewardsController extends Controller
 {
     public function index()
     {
-        return view('rewards.index');
+        $rewards = Reward::all();;
+        return view('rewards.index',['rewards'=>$rewards]);
     }
     public function create()
     {
+        $a_name="test";
+        $rule="test";
+        $money=10000000;
+        Reward::create([
+           'a_name' => $a_name,
+            'rule' => $rule,
+            'money' => $money
+        ]);
         return view('rewards.create');
     }
     public function show($id)
     {
-        //$temp = Reward::find($id);
-        $temp = Reward::where('money','10000000')->first();
-        if($temp == null)
-        {
-            return "404 no found";
-        }
+        $temp = Reward::findOrFail($id);
         $reward = $temp->toArray();
-        /*if($id == 10)
-        {
-            $data = [];
-            $data['a_name'] = "頭獎";  //$a_name = "";
-            $data['rule'] = "......";  //$rule = "";
-            $data['money'] = "10000000";  //$money = "";
-        }
-        else
-        {
-            $data = [];
-            $data['a_name'] = "NULL";  //$a_name = "";
-            $data['rule'] = "NULL";  //$rule = "";
-            $data['money'] = "NULL";  //$money = "";
-        }*/
-
-        return view('rewards.show',$reward);/*->with(["a_ID" => $id,
-                                            "a_name"=>$a_name,
-                                            "rule"=>$rule,
-                                            "money"=>$money]);*/
+        return view('rewards.show',$reward);
     }
     public function edit($id)
     {
-        $a_name = "NULL";
-        $rule = "NULL";
-        $money = "NULL";
-        return view('rewards.edit')->with(["a_id" => $id,
-            "a_name"=>$a_name,
-            "rule"=>$rule,
-            "money"=>$money]);
+        $reward = Reward::findOrFail($id)->toArray();
+        return view('rewards.edit',$reward);
     }
 }

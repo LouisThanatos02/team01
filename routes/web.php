@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RecriptsController;
+use App\Http\Controllers\ReceiptsController;
 use App\Http\Controllers\RewardsController;
 /*
 |--------------------------------------------------------------------------
@@ -21,16 +21,16 @@ Route::get('/', function () {
 發票
 ----------------------------------------*/
 //查詢-------------------------------------------------
-Route::get('receipts',[RecriptsController::class,'index'])->name('receipts.index');
+Route::get('receipts',[ReceiptsController::class,'index'])->name('receipts.index');
 
 //建立-------------------------------------------------
-Route::get('receipts/create', [RecriptsController::class,'create']);
+Route::get('receipts/create', [ReceiptsController::class,'create']);
 
 //顯示單筆-----------------------------------------------
-Route::get('receipts/{id}', [RecriptsController::class,'show'])->where('id','[0-9]+');
+Route::get('receipts/{id}', [ReceiptsController::class,'show'])->where('id','[0-9]+');
 
 //修改--------------------------------------------------
-Route::get('receipts/{id}/edit', [RecriptsController::class,'edit'])->where('id','[0-9]+');;
+Route::get('receipts/{id}/edit', [ReceiptsController::class,'edit'])->where('id','[0-9]+');;
 
 
 /*--------------------------------------
