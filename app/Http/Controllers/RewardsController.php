@@ -18,12 +18,12 @@ class RewardsController extends Controller
         $a_name="test";
         $rule="test";
         $money=10000000;
-        Reward::create([
+        $reward = Reward::create([
            'a_name' => $a_name,
             'rule' => $rule,
             'money' => $money
         ]);
-        return view('rewards.create');
+        return view('rewards.create',$reward);
     }
     public function show($id)
     {
@@ -33,7 +33,13 @@ class RewardsController extends Controller
     }
     public function edit($id)
     {
-        $reward = Reward::findOrFail($id)->toArray();
+        $temp = Reward::findOrFail($id);
+        $temp->a_name="激動獎";
+        $temp->rule="(很長很長的規則)";
+        $temp->money=50;
+        $temp->save();
+
+        $reward=$temp->toArray();
         return view('rewards.edit',$reward);
     }
 }

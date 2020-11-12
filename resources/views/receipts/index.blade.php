@@ -31,12 +31,16 @@
         <td style="color: blueviolet">獎項</td>
         <td style="color: steelblue">號碼</td>
     </tr>
-    @foreach($receipts as $receipt)
+    @foreach($receipts as $receipt )
         <tr>
             <td>{{$receipt->id}}</td>
             <td>{{substr($receipt->period_name,0,3)}}
             {{substr($receipt->period_name,3)}}</td>
-            <td>{{$receipt->a_ID}}</td>
+            @foreach($rewards as $reward)
+                @if($receipt->a_ID == $reward->id)
+                <td>{{$reward->a_name}}</td>
+                @endif
+            @endforeach
             <td>{{$receipt->number}}</td>
         </tr>
     @endforeach
