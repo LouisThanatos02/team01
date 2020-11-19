@@ -24,13 +24,13 @@ Route::get('/', function () {
 Route::get('receipts',[ReceiptsController::class,'index'])->name('receipts.index');
 
 //建立-------------------------------------------------
-Route::get('receipts/create', [ReceiptsController::class,'create']);
+Route::get('receipts/create', [ReceiptsController::class,'create'])->name('receipts.create');
 
 //顯示單筆-----------------------------------------------
-Route::get('receipts/{id}', [ReceiptsController::class,'show'])->where('id','[0-9]+');
+Route::get('receipts/{id}', [ReceiptsController::class,'show'])->where('id','[0-9]+')->name('receipts.show');
 
 //修改--------------------------------------------------
-Route::get('receipts/{id}/edit', [ReceiptsController::class,'edit'])->where('id','[0-9]+');;
+Route::get('receipts/{id}/edit', [ReceiptsController::class,'edit'])->where('id','[0-9]+')->name('receipts.edit');
 
 
 /*--------------------------------------
@@ -40,10 +40,10 @@ Route::get('receipts/{id}/edit', [ReceiptsController::class,'edit'])->where('id'
 Route::get('rewards', [RewardsController::class,'index'])->name('rewards.index');
 
 //建立-------------------------------------------
-Route::get('rewards/create', [RewardsController::class,'create']);
+Route::get('rewards/create', [RewardsController::class,'create'])->name('rewards.create');
 
 //顯示單筆-------------------------------------------
-Route::get('rewards/{id}', [RewardsController::class,'show'])->where('id','[0-9]+');
+Route::get('rewards/{id}', [RewardsController::class,'show'])->where('id','[0-9]+')->name('rewards.show');
 
 //修改-------------------------------------------------
-Route::get('rewards/{id}/edit', [RewardsController::class,'edit'])->where('id','[0-9]+');;
+Route::get('rewards/{id}/edit', [RewardsController::class,'edit'])->where('id','[0-9]+')->name('rewards.edit');
