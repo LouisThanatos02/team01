@@ -11,7 +11,8 @@
 {!! Form::Label('rule','規則 : ') !!}
 {!! Form::text('rule',null) !!}<br>
 {!! Form::Label('money','獎金 : ') !!}
-{!! Form::text('money',null) !!}<br>
+{!! Form::text('money',null) !!}<br><br>
+{!! Form::submit('新增') !!}<br>
 
 {!! Form::close() !!}
 @endsection

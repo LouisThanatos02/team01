@@ -6,12 +6,13 @@
 
 {!! Form::open(['url'=>'receipts/store']) !!}
 
-    {!! Form::Label('p_name','期數 : ') !!}
-    {!! Form::text('p_name',null) !!}<br>
-    {!! Form::Label('a_id','獎項 : ') !!}
-    {!! Form::text('a_id',null) !!}<br>
-    {!! Form::Label('number','號碼 : ') !!}
-    {!! Form::text('number',null) !!}<br>
+{!! Form::Label('p_name','期數 : ') !!}
+{!! Form::text('p_name',null) !!}<br>
+{!! Form::Label('a_id','獎項 : ') !!}
+{!! Form::text('a_id',null) !!}<br>
+{!! Form::Label('number','號碼 : ') !!}
+{!! Form::text('number',null) !!}<br><br>
+{!! Form::submit('新增') !!}<br>
 
 {!! Form::close() !!}
 @endsection
