@@ -17,19 +17,7 @@ class ReceiptsController extends Controller
     }
     public function create()
     {
-
-        $period_name = "1091112";
-        $a_ID = 1;
-        $number = "74181055";
-
-        $receipt=Receipt::create([
-            'period_name' => $period_name,
-            'a_ID' => $a_ID,
-            'number' => $number,
-            'created_at' =>Carbon::now(),
-            'updated_at' =>Carbon::now()
-        ]);
-        return view('receipts.create',$receipt);
+        return view('receipts.create');
     }
     public function show($id)
     {
@@ -48,5 +36,9 @@ class ReceiptsController extends Controller
 
         $receipt=$temp->toArray();
         return view('receipts.edit',$receipt);
+    }
+    public function store()
+    {
+        return view('receipts.store');
     }
 }

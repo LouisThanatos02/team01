@@ -1,20 +1,17 @@
 @extends('app')
 @section('title','獎勵資料')
-@section('theme','這是新增一筆獎勵表單的 view')
+@section('theme','新增一筆獎勵資料')
 @section('body')
 <!--{{route('rewards.index')}}">回到獎勵的 view</a>-->
-<table class="text-center">
-    <tr>
-        <td>編號</td>
-        <td>獎項</td>
-        <td>規則</td>
-        <td>獎金</td>
-    </tr>
-    <tr>
-        <td>{{$id}}</td>
-        <td>{{$a_name}}</td>
-        <td>{{$rule}}</td>
-        <td>{{$money}}</td>
-    </tr>
-</table>
+
+{!! Form::open(['url'=>'rewards/store']) !!}
+
+{!! Form::Label('name','獎項 : ') !!}
+{!! Form::text('name',null) !!}<br>
+{!! Form::Label('rule','規則 : ') !!}
+{!! Form::text('rule',null) !!}<br>
+{!! Form::Label('money','獎金 : ') !!}
+{!! Form::text('money',null) !!}<br>
+
+{!! Form::close() !!}
 @endsection

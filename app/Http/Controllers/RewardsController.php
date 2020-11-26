@@ -15,15 +15,7 @@ class RewardsController extends Controller
     }
     public function create()
     {
-        $a_name="test";
-        $rule="test";
-        $money=10000000;
-        $reward = Reward::create([
-           'a_name' => $a_name,
-            'rule' => $rule,
-            'money' => $money
-        ]);
-        return view('rewards.create',$reward);
+        return view('rewards.create');
     }
     public function show($id)
     {
@@ -41,5 +33,9 @@ class RewardsController extends Controller
 
         $reward=$temp->toArray();
         return view('rewards.edit',$reward);
+    }
+    public function store()
+    {
+        return view('rewards.store');
     }
 }
