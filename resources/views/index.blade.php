@@ -21,11 +21,16 @@
     </style>
 </head>
 <body>
-<h1>歡迎來到本系統</h1>
-<table width="200" border ="5">
+<h1>歡迎來到發票資料庫系統</h1>
+<table width="150" border ="2">
     <tr>
-        <td><h4><a href="<?php echo route('receipts.index');?>">發票的 view</a></h4></td>
-        <td><h4><a href="<?php echo route('rewards.index');?>">獎勵的 view</a></h4></td>
+        {!! Form::open(['url'=>'receipts']) !!}
+        {!! Form::submit('到發票',['style' => 'width:200px;height:60px;']) !!}<br>
+        {!! Form::close() !!}
+
+        {!! Form::open(['url'=>'rewards']) !!}
+        {!! Form::submit('到獎勵',['style' => 'width:200px;height:600px;']) !!}<br>
+        {!! Form::close() !!}
     </tr>
 </table>
 </body>

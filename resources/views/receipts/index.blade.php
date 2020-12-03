@@ -15,17 +15,17 @@
     @foreach($receipts as $receipt )
         <tr>
             <td>{{$receipt->id}}</td>
-            <td>{{substr($receipt->period_name,0,3)}}
-            {{substr($receipt->period_name,3)}}</td>
-            @foreach($rewards as $reward)
-                @if($receipt->a_ID == $reward->id)
-                <td>{{$reward->a_name}}</td>
-                @endif
-            @endforeach
+            <td>{{substr($receipt->p_name,0,3)}}｜{{substr($receipt->p_name,3)}}</td>
+            <td>{{$receipt->a_name}}</td>
             <td>{{$receipt->number}}</td>
+
             <td>
+                {!! Form::open(['url'=>'receipts/delete/'.$receipt->id,'method' => 'delete']) !!}
                 <a style="color: deeppink" href="{{route('receipts.show',['id'=>$receipt->id])}}">顯示</a>
                 <a style="color: brown" href="{{route('receipts.edit',['id'=>$receipt->id])}}">編輯</a>
+                {!! Form::submit('刪除') !!}
+                <!--<a style="color: red" href="{{route('receipts.delete',['id'=>$receipt->id])}}">刪除</a>-->
+                {!! Form::close() !!}
             </td>
         </tr>
     @endforeach

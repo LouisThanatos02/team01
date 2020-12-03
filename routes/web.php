@@ -22,6 +22,8 @@ Route::get('/', function () {
 ----------------------------------------*/
 //查詢-------------------------------------------------
 Route::get('receipts',[ReceiptsController::class,'index'])->name('receipts.index');
+//刪除---------------------------------------
+Route::delete('receipts/delete/{id}', [ReceiptsController::class,'delete'])->where('id','[0-9]+')->name('receipts.delete');
 
 //建立-------------------------------------------------
 Route::get('receipts/create', [ReceiptsController::class,'create'])->name('receipts.create');
@@ -39,11 +41,14 @@ Route::patch('receipts/update/{id}', [ReceiptsController::class,'update'])->wher
 
 
 
+
 /*--------------------------------------
 獎項
 ----------------------------------------*/
 //查詢---------------------------------------
 Route::get('rewards', [RewardsController::class,'index'])->name('rewards.index');
+//刪除---------------------------------------
+Route::delete('rewards/delete/{id}', [RewardsController::class,'delete'])->where('id','[0-9]+')->name('rewards.delete');
 
 //建立-------------------------------------------
 Route::get('rewards/create', [RewardsController::class,'create'])->name('rewards.create');
@@ -57,3 +62,5 @@ Route::get('rewards/{id}', [RewardsController::class,'show'])->where('id','[0-9]
 Route::get('rewards/{id}/edit', [RewardsController::class,'edit'])->where('id','[0-9]+')->name('rewards.edit');
 //修改儲存------------------------------------------------
 Route::patch('rewards/update/{id}', [RewardsController::class,'update'])->where('id','[0-9]+')->name('rewards.update');
+
+

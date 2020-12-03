@@ -6,14 +6,19 @@ use App\Models\Receipt;
 use App\Models\Reward;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReceiptsController extends Controller
 {
     public function index()
     {
-        $receipts = Receipt::all();
-        $rewards = Reward::all();
-        return view('receipts.index',['receipts'=>$receipts , 'rewards'=>$rewards]);
+        $receipts = DB::table('receipts')
+        ->join('rewards','receipts.a_ID','=','rewards.id')
+        ->orderBy("receipts.id")
+        ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number')
+        ->get();
+
+        return view('receipts.index',['receipts'=>$receipts]);
     }
     public function create()
     {
@@ -21,10 +26,14 @@ class ReceiptsController extends Controller
     }
     public function show($id)
     {
-        $temp = Receipt::findOrFail($id);
-        $receipt = $temp->toArray();
+        $receipt = DB::table('receipts')
+            ->join('rewards','receipts.a_ID','=','rewards.id')
+            ->orderBy("receipts.id")
+            ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number')
+            ->where('receipts.id','=',$id)
+            ->get();
 
-        return view('receipts.show',$receipt);
+        return view('receipts.show',['receipt'=>$receipt]);
     }
     public function edit($id)
     {
@@ -59,5 +68,11 @@ class ReceiptsController extends Controller
 
         return redirect('receipts');
 
+    }
+    public function delete($id)
+    {
+        $receipts=Receipt::findOrFail($id);
+        $receipts->delete();
+        return redirect('receipts');
     }
 }

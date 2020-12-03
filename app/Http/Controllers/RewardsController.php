@@ -58,4 +58,10 @@ class RewardsController extends Controller
         return redirect('rewards');
 
     }
+    public function delete($id)
+    {
+        $rewards=Reward::findOrFail($id);
+        $rewards->delete();
+        return redirect('rewards');
+    }
 }

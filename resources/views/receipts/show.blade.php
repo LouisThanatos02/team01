@@ -3,18 +3,11 @@
 @section('theme','這是顯示一筆發票資料表單的 view')
 @section('body')
 <!--<a href="{{route('receipts.index')}}">回到發票的 view</a>-->
-<table class="text-center">
-    <tr>
-        <td>編號</td>
-        <td>期數</td>
-        <td>獎項</td>
-        <td>號碼</td>
-    </tr>
-    <tr>
-        <td>{{$id}}</td>
-        <td>{{$period_name}}</td>
-        <td>{{$a_ID}}</td>
-        <td>{{$number}}</td>
-    </tr>
-</table>
+@forelse($receipt as $receipt)
+編號 : {{$receipt->id}}<br>
+期數 : {{$receipt->p_name}}<br>
+獎項 : {{$receipt->a_name}}<br>
+號碼 : {{$receipt->number}}<br>
+@empty
+@endforelse
 @endsection
