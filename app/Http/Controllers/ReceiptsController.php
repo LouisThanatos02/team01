@@ -26,7 +26,7 @@ class ReceiptsController extends Controller
 
         return view('receipts.show',$receipt);
     }
-    public function edit($id)
+    public function edit($id,Request $request)
     {
         $temp = Receipt::findOrFail($id);
         $temp->period_name="9990102";
@@ -37,8 +37,20 @@ class ReceiptsController extends Controller
         $receipt=$temp->toArray();
         return view('receipts.edit',$receipt);
     }
-    public function store()
+    public function store(Request $request)
     {
-        return view('receipts.store');
+        $p_name = $request->input('p_name');
+        $a_id = $request->input('a_id');
+        $number = $request->input('number');
+
+        Receipt::create([
+            'period_name' => $p_name,
+            'a_ID' => $a_id,
+            'number' => $number,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect('receipts');
     }
 }

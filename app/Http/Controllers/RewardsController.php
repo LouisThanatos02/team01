@@ -34,8 +34,20 @@ class RewardsController extends Controller
         $reward=$temp->toArray();
         return view('rewards.edit',$reward);
     }
-    public function store()
+    public function store(Request $request)
     {
-        return view('rewards.store');
+        $a_name = $request->input('name');
+        $rule = $request->input('rule');
+        $money = $request->input('money');
+
+        Reward::create([
+            'a_name' => $a_name,
+            'rule' => $rule,
+            'money' => $money,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect('rewards');
     }
 }

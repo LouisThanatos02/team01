@@ -53,4 +53,4 @@ Route::get('rewards/{id}', [RewardsController::class,'show'])->where('id','[0-9]
 Route::get('rewards/{id}/edit', [RewardsController::class,'edit'])->where('id','[0-9]+')->name('rewards.edit');
 
 //儲存---------------------------------------------------
-Route::post('rewards/store', [ReceiptsController::class,'store'])->name('rewards.store');
+Route::post('rewards/store', [RewardsController::class,'store'])->name('rewards.store');
