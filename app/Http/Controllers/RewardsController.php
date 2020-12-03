@@ -26,10 +26,6 @@ class RewardsController extends Controller
     public function edit($id)
     {
         $temp = Reward::findOrFail($id);
-        $temp->a_name="激動獎";
-        $temp->rule="(很長很長的規則)";
-        $temp->money=50;
-        $temp->save();
 
         $reward=$temp->toArray();
         return view('rewards.edit',$reward);
@@ -49,5 +45,17 @@ class RewardsController extends Controller
         ]);
 
         return redirect('rewards');
+    }
+    public function update($id,Request $request)
+    {
+        $rewards = Reward::findOrFail($id);
+
+        $rewards -> a_name = $request->input('name');
+        $rewards-> rule = $request->input('rule');
+        $rewards-> money = $request->input('money');
+        $rewards->save();
+
+        return redirect('rewards');
+
     }
 }

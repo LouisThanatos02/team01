@@ -25,15 +25,17 @@ Route::get('receipts',[ReceiptsController::class,'index'])->name('receipts.index
 
 //建立-------------------------------------------------
 Route::get('receipts/create', [ReceiptsController::class,'create'])->name('receipts.create');
+//建立儲存---------------------------------------------------
+Route::post('receipts/store', [ReceiptsController::class,'store'])->name('receipts.store');
 
 //顯示單筆-----------------------------------------------
 Route::get('receipts/{id}', [ReceiptsController::class,'show'])->where('id','[0-9]+')->name('receipts.show');
 
 //修改--------------------------------------------------
 Route::get('receipts/{id}/edit', [ReceiptsController::class,'edit'])->where('id','[0-9]+')->name('receipts.edit');
+//修改儲存------------------------------------------------
+Route::patch('receipts/update/{id}', [ReceiptsController::class,'update'])->where('id','[0-9]+')->name('receipts.update');
 
-//儲存---------------------------------------------------
-Route::post('receipts/store', [ReceiptsController::class,'store'])->name('receipts.store');
 
 
 
@@ -45,12 +47,13 @@ Route::get('rewards', [RewardsController::class,'index'])->name('rewards.index')
 
 //建立-------------------------------------------
 Route::get('rewards/create', [RewardsController::class,'create'])->name('rewards.create');
+//建立儲存---------------------------------------------------
+Route::post('rewards/store', [RewardsController::class,'store'])->name('rewards.store');
 
 //顯示單筆-------------------------------------------
 Route::get('rewards/{id}', [RewardsController::class,'show'])->where('id','[0-9]+')->name('rewards.show');
 
 //修改-------------------------------------------------
 Route::get('rewards/{id}/edit', [RewardsController::class,'edit'])->where('id','[0-9]+')->name('rewards.edit');
-
-//儲存---------------------------------------------------
-Route::post('rewards/store', [RewardsController::class,'store'])->name('rewards.store');
+//修改儲存------------------------------------------------
+Route::patch('rewards/update/{id}', [RewardsController::class,'update'])->where('id','[0-9]+')->name('rewards.update');

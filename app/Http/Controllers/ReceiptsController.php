@@ -26,14 +26,9 @@ class ReceiptsController extends Controller
 
         return view('receipts.show',$receipt);
     }
-    public function edit($id,Request $request)
+    public function edit($id)
     {
         $temp = Receipt::findOrFail($id);
-        $temp->period_name="9990102";
-        $temp->a_ID=1;
-        $temp->number="98765432";
-        $temp->save();
-
         $receipt=$temp->toArray();
         return view('receipts.edit',$receipt);
     }
@@ -52,5 +47,17 @@ class ReceiptsController extends Controller
         ]);
 
         return redirect('receipts');
+    }
+    public function update($id,Request $request)
+    {
+        $receipts = Receipt::findOrFail($id);
+
+        $receipts -> period_name = $request->input('p_name');
+        $receipts-> a_ID = $request->input('a_id');
+        $receipts-> number = $request->input('number');
+        $receipts->save();
+
+        return redirect('receipts');
+
     }
 }
