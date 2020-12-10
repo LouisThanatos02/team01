@@ -1,6 +1,6 @@
 @extends('app')
 @section('title','發票資料')
-@section('theme','這是預備顯示所有發票資料表單的 view')
+@section('theme','所有發票資料')
 @section('body')
 <!--<a style="color: deeppink" href="{{route('rewards.index')}}">切換到獎勵的 view</a>-->
 <a style="color: gold" href="{{route('receipts.create')}}">新增一筆發票</a>

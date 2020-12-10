@@ -19,20 +19,19 @@ class RewardsController extends Controller
     }
     public function show($id)
     {
-        $temp = Reward::findOrFail($id);
-        $reward = $temp->toArray();
-        return view('rewards.show',$reward);
+        $reward = Reward::findOrFail($id);
+
+        return view('rewards.show',['reward'=>$reward]);
     }
     public function edit($id)
     {
-        $temp = Reward::findOrFail($id);
+        $reward = Reward::findOrFail($id);
 
-        $reward=$temp->toArray();
-        return view('rewards.edit',$reward);
+        return view('rewards.edit',['reward'=>$reward]);
     }
     public function store(Request $request)
     {
-        $a_name = $request->input('name');
+        $a_name = $request->input('a_name');
         $rule = $request->input('rule');
         $money = $request->input('money');
 
@@ -50,7 +49,7 @@ class RewardsController extends Controller
     {
         $rewards = Reward::findOrFail($id);
 
-        $rewards -> a_name = $request->input('name');
+        $rewards -> a_name = $request->input('a_name');
         $rewards-> rule = $request->input('rule');
         $rewards-> money = $request->input('money');
         $rewards->save();

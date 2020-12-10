@@ -1,6 +1,6 @@
 @extends('app')
 @section('title','發票資料')
-@section('theme','這是修改一筆發票資料表單的 view')
+@section('theme','修改一筆發票資料')
 @section('body')
 <!--<a href="{{route('receipts.index')}}">回到發票的 view</a>-->
 編號 : {{$receipt->id}}
