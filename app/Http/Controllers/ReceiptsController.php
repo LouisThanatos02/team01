@@ -22,7 +22,17 @@ class ReceiptsController extends Controller
     }
     public function create()
     {
-        return view('receipts.create');
+        $reward = DB::table('rewards')
+            ->select('rewards.id','rewards.a_name')
+            ->orderBy('rewards.id','asc')
+            ->get();
+
+        $data=[];
+        foreach ($reward as $reward)
+        {
+            $data[$reward->id]=$reward->a_name;
+        }
+        return view('receipts.create',['reward'=>$data]);
     }
     public function show($id)
     {
@@ -37,9 +47,19 @@ class ReceiptsController extends Controller
     }
     public function edit($id)
     {
-        $temp = Receipt::findOrFail($id);
-        $receipt=$temp->toArray();
-        return view('receipts.edit',$receipt);
+        $receipt = Receipt::findOrFail($id);
+        $reward = DB::table('rewards')
+            ->select('rewards.id','rewards.a_name')
+            ->orderBy('rewards.id','asc')
+            ->get();
+
+        $data=[];
+        foreach ($reward as $reward)
+        {
+            $data[$reward->id]=$reward->a_name;
+        }
+
+        return view('receipts.edit',['receipt'=>$receipt,'reward'=>$data]);
     }
     public function store(Request $request)
     {
@@ -73,6 +93,15 @@ class ReceiptsController extends Controller
     {
         $receipts=Receipt::findOrFail($id);
         $receipts->delete();
+        return redirect('receipts');
+    }
+    public function upOne($id)
+    {
+        $targe=Receipt::findOrFail($id);
+        return redirect('receipts');
+    }
+    public function downOne($id)
+    {
         return redirect('receipts');
     }
 }
