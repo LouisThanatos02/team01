@@ -3,8 +3,8 @@
 @section('theme','所有發票資料')
 @section('body')
 <!--<a style="color: deeppink" href="{{route('rewards.index')}}">切換到獎勵的 view</a>-->
-<a style="color: gold" href="{{route('receipts.create')}}">新增一筆發票</a>
-<table class="text-center" boarder = "1">
+<a style="color: gold"  href="{{route('receipts.create')}}">新增一筆發票</a>
+<table class="text-center"  border="1" >
     <tr>
         <td style="color: crimson">編號</td>
         <td style="color: deepskyblue">期數</td>
@@ -37,7 +37,7 @@
                     {!! Form::close() !!}
 
                 {!! Form::open(['url'=>'receipts/downOne/'.$receipt->id,'method' => 'patch']) !!}
-                @if($receipt->id == 50)
+                @if($receipt->id == $lestID)
                     {!! Form::submit('↓',['disabled'=>'disabled']) !!}
                 @else
                     {!! Form::submit('↓') !!}

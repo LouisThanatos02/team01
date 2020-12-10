@@ -39,9 +39,9 @@ Route::get('receipts/{id}/edit', [ReceiptsController::class,'edit'])->where('id'
 Route::patch('receipts/update/{id}', [ReceiptsController::class,'update'])->where('id','[0-9]+')->name('receipts.update');
 
 //上移一個-------------------------------------------------
-Route::patch('receipts/upOne/{id}', [ReceiptsController::class,'update'])->where('id','[0-9]+')->name('receipts.upOne');
+Route::patch('receipts/upOne/{id}', [ReceiptsController::class,'upOne'])->where('id','[0-9]+')->name('receipts.upOne');
 //下移一個-------------------------------------------------
-Route::patch('receipts/downOne/{id}', [ReceiptsController::class,'update'])->where('id','[0-9]+')->name('receipts.downOne');
+Route::patch('receipts/downOne/{id}', [ReceiptsController::class,'downOne'])->where('id','[0-9]+')->name('receipts.downOne');
 
 
 

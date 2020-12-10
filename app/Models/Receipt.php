@@ -28,4 +28,5 @@ class Receipt extends Model
             ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number')
             ->where('receipts.id','=',$id);
     }
+
 }

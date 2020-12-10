@@ -15,9 +15,9 @@ class ReceiptsController extends Controller
         $receipts = Receipt::searchall()->get();
 
         $temp = $receipts->toArray();
-        $lestId = end($receipts);
-        //return $lestId;
-        return view('receipts.index',['receipts'=>$receipts,'lestID'=>$lestId]);
+        $lestId = end($temp);
+        foreach ($lestId as $lestId)
+        return view('receipts.index',['receipts'=>$receipts,'lestID' => $lestId]);
     }
     public function create()
     {
@@ -84,11 +84,31 @@ class ReceiptsController extends Controller
     }
     public function upOne($id)
     {
-        $targe=Receipt::findOrFail($id);
+        /*$target = Receipt::find($id);
+        $beSwitched = Receipt::find($id-1);
+        $p_nameTemp = $target->period_name;
+        $a_id_Temp = $target->a_ID;
+        $number_Temp = $target->number;
+
+        $target->period_name = $beSwitched->period_name;
+        $target->a_ID = $beSwitched->a_ID;
+        $target->number = $beSwitched->number;
+
+        $beSwitched->period_name = $p_nameTemp;
+        $beSwitched->a_ID = $a_id_Temp;
+        $beSwitched->number = $number_Temp;
+        $target->save();
+        $beSwitched->save();*/
+
+
+        //return $target;
         return redirect('receipts');
     }
     public function downOne($id)
     {
+        //$target = Receipt::find($id);
+        //$beSwitched = Receipt::find($id+1);
+
         return redirect('receipts');
     }
 }
