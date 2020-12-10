@@ -13,11 +13,18 @@ class ReceiptsController extends Controller
     public function index()
     {
         $receipts = Receipt::searchall()->get();
+        $p_name = Receipt::allPname()->get();
+
+        $data=[];
+        foreach ($p_name as $p_name)
+        {
+            $data["$p_name->p_name"]=$p_name->p_name;
+        }
 
         $temp = $receipts->toArray();
         $lestId = end($temp);
         foreach ($lestId as $lestId)
-        return view('receipts.index',['receipts'=>$receipts,'lestID' => $lestId]);
+        return view('receipts.index',['receipts'=>$receipts,'lestID' => $lestId,'p_name'=>$data]);
     }
     public function create()
     {
@@ -110,5 +117,9 @@ class ReceiptsController extends Controller
         //$beSwitched = Receipt::find($id+1);
 
         return redirect('receipts');
+    }
+    public function findsame(Request $request)
+    {
+        $receipts = Receipt::findsame($request->input('p_name'))->get();
     }
 }

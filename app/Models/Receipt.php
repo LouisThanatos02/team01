@@ -28,5 +28,12 @@ class Receipt extends Model
             ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number')
             ->where('receipts.id','=',$id);
     }
-
+    public function scopeallPname($query)
+    {
+        $query->select('period_name as p_name')->groupBy('period_name');
+    }
+    public function scopefindsame($query)
+    {
+        
+    }
 }

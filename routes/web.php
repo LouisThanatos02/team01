@@ -32,6 +32,8 @@ Route::post('receipts/store', [ReceiptsController::class,'store'])->name('receip
 
 //顯示單筆-----------------------------------------------
 Route::get('receipts/{id}', [ReceiptsController::class,'show'])->where('id','[0-9]+')->name('receipts.show');
+//顯示特定---------------------------------------------------
+Route::post('receipts/findsame', [ReceiptsController::class,'findsame'])->name('receipts.store');
 
 //修改--------------------------------------------------
 Route::get('receipts/{id}/edit', [ReceiptsController::class,'edit'])->where('id','[0-9]+')->name('receipts.edit');

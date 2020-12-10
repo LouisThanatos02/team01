@@ -2,8 +2,12 @@
 @section('title','發票資料')
 @section('theme','所有發票資料')
 @section('body')
-<!--<a style="color: deeppink" href="{{route('rewards.index')}}">切換到獎勵的 view</a>-->
-<a style="color: gold"  href="{{route('receipts.create')}}">新增一筆發票</a>
+<a style="color: gold" href="{{route('receipts.create')}}">新增一筆發票</a>
+{!! Form::open(['url'=>'receipts/findsame','method' => 'POST']) !!}
+{!! Form::Label('p_name','期數 : ') !!}
+{!! Form::select('p_name',$p_name) !!}
+{!! Form::submit('查詢') !!}
+{!! Form::close() !!}
 <table class="text-center"  border="1" >
     <tr>
         <td style="color: crimson">編號</td>
