@@ -12,20 +12,16 @@ class ReceiptsController extends Controller
 {
     public function index()
     {
-        $receipts = DB::table('receipts')
-        ->join('rewards','receipts.a_ID','=','rewards.id')
-        ->orderBy("receipts.id")
-        ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number')
-        ->get();
+        $receipts = Receipt::searchall()->get();
 
-        return view('receipts.index',['receipts'=>$receipts]);
+        $temp = $receipts->toArray();
+        $lestId = end($receipts);
+        //return $lestId;
+        return view('receipts.index',['receipts'=>$receipts,'lestID'=>$lestId]);
     }
     public function create()
     {
-        $reward = DB::table('rewards')
-            ->select('rewards.id','rewards.a_name')
-            ->orderBy('rewards.id','asc')
-            ->get();
+        $reward = Reward::search()->get();
 
         $data=[];
         foreach ($reward as $reward)
@@ -36,29 +32,20 @@ class ReceiptsController extends Controller
     }
     public function show($id)
     {
-        $receipt = DB::table('receipts')
-            ->join('rewards','receipts.a_ID','=','rewards.id')
-            ->orderBy("receipts.id")
-            ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number')
-            ->where('receipts.id','=',$id)
-            ->get();
+        $receipt = Receipt::searchone($id)->get();
 
         return view('receipts.show',['receipt'=>$receipt]);
     }
     public function edit($id)
     {
-        $receipt = Receipt::findOrFail($id);
-        $reward = DB::table('rewards')
-            ->select('rewards.id','rewards.a_name')
-            ->orderBy('rewards.id','asc')
-            ->get();
+        $receipt = Receipt::searchone($id)->get();
+        $reward = Reward::search()->get();
 
         $data=[];
         foreach ($reward as $reward)
         {
             $data[$reward->id]=$reward->a_name;
         }
-
         return view('receipts.edit',['receipt'=>$receipt,'reward'=>$data]);
     }
     public function store(Request $request)

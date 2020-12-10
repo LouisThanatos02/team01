@@ -15,4 +15,10 @@ class Reward extends Model
         'created_at',
         'updated_at'
     ];
+    public function scopeSearch($quarry)
+    {
+        $quarry->select('rewards.id','rewards.a_name')
+            ->orderBy('rewards.id','asc');
+    }
+
 }

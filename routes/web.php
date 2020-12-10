@@ -38,7 +38,10 @@ Route::get('receipts/{id}/edit', [ReceiptsController::class,'edit'])->where('id'
 //修改儲存------------------------------------------------
 Route::patch('receipts/update/{id}', [ReceiptsController::class,'update'])->where('id','[0-9]+')->name('receipts.update');
 
-
+//上移一個-------------------------------------------------
+Route::patch('receipts/upOne/{id}', [ReceiptsController::class,'update'])->where('id','[0-9]+')->name('receipts.upOne');
+//下移一個-------------------------------------------------
+Route::patch('receipts/downOne/{id}', [ReceiptsController::class,'update'])->where('id','[0-9]+')->name('receipts.downOne');
 
 
 
@@ -63,4 +66,7 @@ Route::get('rewards/{id}/edit', [RewardsController::class,'edit'])->where('id','
 //修改儲存------------------------------------------------
 Route::patch('rewards/update/{id}', [RewardsController::class,'update'])->where('id','[0-9]+')->name('rewards.update');
 
-
+//上移一個------------------------------------------------
+Route::patch('rewards/upOne/{id}', [RewardsController::class,'upOne'])->where('id','[0-9]+')->name('rewards.upOne');
+//下移一個------------------------------------------------
+Route::patch('rewards/downOne/{id}', [RewardsController::class,'downOne'])->where('id','[0-9]+')->name('rewards.downOne');

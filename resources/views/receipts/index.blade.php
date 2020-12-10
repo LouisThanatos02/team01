@@ -12,6 +12,7 @@
         <td style="color: steelblue">號碼</td>
         <td style="color: dodgerblue">操作</td>
     </tr>
+
     @foreach($receipts as $receipt )
         <tr>
             <td>{{$receipt->id}}</td>
@@ -24,26 +25,27 @@
                 <a style="color: deeppink" href="{{route('receipts.show',['id'=>$receipt->id])}}">顯示</a>
                 <a style="color: brown" href="{{route('receipts.edit',['id'=>$receipt->id])}}">編輯</a>
                 {!! Form::submit('刪除') !!}
-
-                @if($receipt->id>0)
-                    {!! Form::open(['url'=>'receipts/upOne/'.$receipt->id,'method' => 'patch','disable' => 'disable']) !!}
+                {!! Form::close() !!}
+            </td>
+            <td>
+                {!! Form::open(['url'=>'receipts/upOne/'.$receipt->id,'method' => 'patch']) !!}
+                @if($receipt->id==0)
+                    {!! Form::submit('↑',['disabled'=>'disabled'])!!}
                 @else
-                        {!! Form::open(['url'=>'receipts/upOne/'.$receipt->id,'method' => 'patch']) !!}
+                    {!! Form::submit('↑') !!}
                 @endif
-                        {!! Form::submit('↑') !!}
-
-
-                    @if($receipt->id>0)
-                            {!! Form::open(['url'=>'receipts/downOne/'.$receipt->id,'method' => 'patch','disable' => 'disable']) !!}
-                    @else
-                            {!! Form::open(['url'=>'receipts/downOne/'.$receipt->id,'method' => 'patch']) !!}
-                    @endif
-
-                    {!! Form::submit('↓') !!}
                     {!! Form::close() !!}
 
+                {!! Form::open(['url'=>'receipts/downOne/'.$receipt->id,'method' => 'patch']) !!}
+                @if($receipt->id == 50)
+                    {!! Form::submit('↓',['disabled'=>'disabled']) !!}
+                @else
+                    {!! Form::submit('↓') !!}
+                @endif
+                    {!! Form::close() !!}
             </td>
         </tr>
     @endforeach
+
 </table>
 @endsection
