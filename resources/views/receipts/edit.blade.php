@@ -2,6 +2,7 @@
 @section('title','發票資料')
 @section('theme','修改一筆發票資料')
 @section('body')
+    @include('message.error_list')
     @foreach($receipt as $receipt)
     編號 : {{$receipt->id}}
 {!! Form::model($receipt,['method' => 'patch','action'=>['\App\Http\Controllers\ReceiptsController@update',$receipt->id]]) !!}

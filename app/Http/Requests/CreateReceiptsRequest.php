@@ -24,9 +24,9 @@ class CreateReceiptsRequest extends FormRequest
     public function rules()
     {
         return [
-            'period_name' => 'required',
-            'a_ID' => 'required',
-            'number' => 'required',
+            'p_name' => 'required|string|min:7',
+            'a_id' => 'required',
+            'number' => 'required|string|digits_between:3,8',
         ];
     }
 }
