@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateReceiptsRequest;
 use App\Models\Receipt;
 use App\Models\Reward;
 use Carbon\Carbon;
@@ -70,7 +71,7 @@ class ReceiptsController extends Controller
         }
         return view('receipts.edit',['receipt'=>$receipt,'reward'=>$data]);
     }
-    public function store(Request $request)
+    public function store(CreateReceiptsRequest $request)
     {
         $p_name = $request->input('p_name');
         $a_id = $request->input('a_id');
@@ -86,7 +87,7 @@ class ReceiptsController extends Controller
 
         return redirect('receipts');
     }
-    public function update($id,Request $request)
+    public function update($id,CreateReceiptsRequest $request)
     {
         $receipts = Receipt::findOrFail($id);
 
@@ -133,7 +134,7 @@ class ReceiptsController extends Controller
 
         return redirect('receipts');
     }
-    public function Search(Request $request)
+    public function Search(CreateReceiptsRequest $request)
     {
         $selectP = $request->input('p_name');
         $selectAid = $request->input('a_name');

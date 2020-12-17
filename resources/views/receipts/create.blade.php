@@ -5,7 +5,7 @@
 
 {!! Form::open(['url'=>'receipts/store']) !!}
 
-@include('receipts.form',['buttonText'=>'新增'])
+@include('receipts.form',['buttonText'=>'新增','select' => null])
 
 {!! Form::close() !!}
 @endsection

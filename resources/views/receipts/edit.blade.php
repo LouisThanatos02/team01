@@ -5,7 +5,7 @@
     @foreach($receipt as $receipt)
     編號 : {{$receipt->id}}
 {!! Form::model($receipt,['method' => 'patch','action'=>['\App\Http\Controllers\ReceiptsController@update',$receipt->id]]) !!}
-    @include('receipts.form',['buttonText'=>'修改', ])
+    @include('receipts.form',['buttonText'=>'修改','select' => $receipt->a_ID ])
 {!! Form::close() !!}
     @endforeach
 
