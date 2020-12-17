@@ -21,4 +21,5 @@ class Reward extends Model
             ->orderBy('rewards.id','asc');
     }
 
+
 }

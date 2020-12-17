@@ -4,7 +4,7 @@
 </div>
 <div>
     {!! Form::Label('a_id','獎項 : ') !!}
-    {!! Form::select('a_id',$reward) !!}
+    {!! Form::select('a_id',$reward,$receipt->a_ID) !!}
 </div>
 <div>
     {!! Form::Label('number','號碼 : ') !!}

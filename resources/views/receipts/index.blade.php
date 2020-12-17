@@ -3,9 +3,12 @@
 @section('theme','所有發票資料')
 @section('body')
 <a style="color: gold" href="{{route('receipts.create')}}">新增一筆發票</a>
-{!! Form::open(['url'=>'receipts/findsame','method' => 'POST']) !!}
+{!! Form::open(['url'=>'receipts/Search','method' => 'POST']) !!}
 {!! Form::Label('p_name','期數 : ') !!}
-{!! Form::select('p_name',$p_name) !!}
+{!! Form::select('p_name',$p_name,$selectP) !!}
+<br/>
+{!! Form::Label('a_name','獎項 : ') !!}
+{!! Form::select('a_name',$a_name,$selectAid) !!}
 {!! Form::submit('查詢') !!}
 {!! Form::close() !!}
 <table class="text-center"  border="1" >
@@ -31,7 +34,7 @@
                 {!! Form::submit('刪除') !!}
                 {!! Form::close() !!}
             </td>
-            <td>
+            <!--<td>
                 {!! Form::open(['url'=>'receipts/upOne/'.$receipt->id,'method' => 'patch']) !!}
                 @if($receipt->id==0)
                     {!! Form::submit('↑',['disabled'=>'disabled'])!!}
@@ -47,7 +50,7 @@
                     {!! Form::submit('↓') !!}
                 @endif
                     {!! Form::close() !!}
-            </td>
+            </td>-->
         </tr>
     @endforeach
 

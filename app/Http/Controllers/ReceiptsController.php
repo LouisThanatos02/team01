@@ -12,19 +12,34 @@ class ReceiptsController extends Controller
 {
     public function index()
     {
+        $selectP = null;
+        $selectAid = null;
         $receipts = Receipt::searchall()->get();
         $p_name = Receipt::allPname()->get();
+        $a_name = Reward::search()->get();
 
-        $data=[];
+        $pname_data=[];
+        $pname_data[0]="未選取";
         foreach ($p_name as $p_name)
         {
-            $data["$p_name->p_name"]=$p_name->p_name;
+
+            $pname_data["$p_name->p_name"]=$p_name->p_name;
+
         }
+
+        $aname_data=[];
+        $aname_data[0]="未選取";
+        foreach ($a_name as $a_name)
+        {
+            $aname_data["$a_name->id"]=$a_name->a_name;
+        }
+
 
         $temp = $receipts->toArray();
         $lestId = end($temp);
         foreach ($lestId as $lestId)
-        return view('receipts.index',['receipts'=>$receipts,'lestID' => $lestId,'p_name'=>$data]);
+        return view('receipts.index',['receipts'=>$receipts,'lestID' => $lestId,'p_name' => $pname_data,'a_name' => $aname_data,
+                                            'selectP' => $selectP,'selectAid'=>$selectAid]);
     }
     public function create()
     {
@@ -51,7 +66,7 @@ class ReceiptsController extends Controller
         $data=[];
         foreach ($reward as $reward)
         {
-            $data[$reward->id]=$reward->a_name;
+            $data[$reward->id] = $reward->a_name;
         }
         return view('receipts.edit',['receipt'=>$receipt,'reward'=>$data]);
     }
@@ -118,8 +133,39 @@ class ReceiptsController extends Controller
 
         return redirect('receipts');
     }
-    public function findsame(Request $request)
+    public function Search(Request $request)
     {
-        $receipts = Receipt::findsame($request->input('p_name'))->get();
+        $selectP = $request->input('p_name');
+        $selectAid = $request->input('a_name');
+        $receipts = Receipt::Search($selectP,$selectAid)->get();
+        $p_name = Receipt::allPname()->get();
+        $a_name = Reward::search()->get();
+
+        $pname_data=[];
+        $pname_data[0]="未選取";
+        foreach ($p_name as $p_name)
+        {
+
+            $pname_data["$p_name->p_name"]=$p_name->p_name;
+
+        }
+
+
+        $aname_data=[];
+        $aname_data[0]="未選取";
+        foreach ($a_name as $a_name)
+        {
+            $aname_data["$a_name->id"]=$a_name->a_name;
+        }
+        $temp = $receipts->toArray();
+
+        if(($selectP == 0)&($selectAid == 0))
+            return redirect('receipts');
+        else
+            $lestId = end($temp);
+            //foreach ($lestId as $lestId)
+            return view('receipts.index',['receipts'=>$receipts,'lestID' => $lestId,'p_name'=>$pname_data,'a_name' => $aname_data
+                                                ,'selectP' => $selectP,'selectAid'=>$selectAid]);
     }
+
 }

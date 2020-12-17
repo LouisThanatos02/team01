@@ -19,21 +19,27 @@ class Receipt extends Model
     {
         $query->join('rewards','receipts.a_ID','=','rewards.id')
             ->orderBy("receipts.id")
-            ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number');
+            ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number','receipts.a_ID');
     }
     public function scopeSearchOne($query,$id)
     {
         $query->join('rewards','receipts.a_ID','=','rewards.id')
             ->orderBy("receipts.id")
-            ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number')
+            ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number','receipts.a_ID')
             ->where('receipts.id','=',$id);
     }
     public function scopeallPname($query)
     {
         $query->select('period_name as p_name')->groupBy('period_name');
     }
-    public function scopefindsame($query)
+    public function scopeSearch($query,$pname,$aname)
     {
-        
+        $query->join('rewards','receipts.a_ID','=','rewards.id')
+            ->orderBy("receipts.id")
+            ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number');
+        if($pname != 0)
+            $query->where('receipts.period_name','=',$pname);
+        if($aname != 0)
+            $query->where('receipts.a_ID','=',$aname);
     }
 }
