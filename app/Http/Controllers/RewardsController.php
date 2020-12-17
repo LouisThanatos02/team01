@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateRewardsRequest;
 use App\Models\Reward;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class RewardsController extends Controller
 
         return view('rewards.edit',['reward'=>$reward]);
     }
-    public function store(Request $request)
+    public function store(CreateRewardsRequest $request)
     {
         $a_name = $request->input('a_name');
         $rule = $request->input('rule');
@@ -45,7 +46,7 @@ class RewardsController extends Controller
 
         return redirect('rewards');
     }
-    public function update($id,Request $request)
+    public function update($id,CreateRewardsRequest $request)
     {
         $rewards = Reward::findOrFail($id);
 

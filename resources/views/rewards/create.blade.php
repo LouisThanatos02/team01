@@ -2,7 +2,7 @@
 @section('title','獎勵資料')
 @section('theme','新增一筆獎勵資料')
 @section('body')
-
+    @include('message.error_list')
 
 {!! Form::open(['url'=>'rewards/store']) !!}
 
