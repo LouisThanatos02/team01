@@ -16,7 +16,7 @@
 
     <style>
         html{
-            background-color: lightcyan;
+            background-color: black;
         }
         body {
             width: 600px;
@@ -26,20 +26,28 @@
             border: 5px solid gray;
             font-family: 'Nunito';
         }
+        table {
+            align:center;
 
+        }
+        input{
+            background-color: gold;
+            border: 2px solid dodgerblue;
+        }
     </style>
 
 </head>
 <body>
-<table class="text-center" border="1" align="center">
+<table class="text-center" align="center">
     <tr>
         <td>
             @include('header')
             <h1>@yield('theme')</h1>
             @yield('body')
-            @include('footer')
+
         </td>
     </tr>
 </table>
+@include('footer')
 </body>
 </html>

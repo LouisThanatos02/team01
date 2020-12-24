@@ -1,4 +1,4 @@
-<table class="text-center" border="1" align="center">
+<table class="text-center" align="center">
     <tr>
         <td>
             <hr/>

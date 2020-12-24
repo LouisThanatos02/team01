@@ -1,5 +1,5 @@
-<hr size="4px" width="50%" color="gray"/>
-<table class="text-center" border="1" align="center">
+<hr size="4px" width="100%" color="black"/>
+<table class="text-center" align="center">
     <tr>
         <td>
             <a style="color: deeppink" href="{{route('receipts.index')}}">所有發票</a> |
@@ -7,4 +7,4 @@
         </td>
     </tr>
 </table>
-<hr size="4px" width="100%" color="black"/>
+<hr size="4px" width="30%" color="gray"/>
