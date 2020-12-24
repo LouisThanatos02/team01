@@ -134,11 +134,11 @@ class ReceiptsController extends Controller
 
         return redirect('receipts');
     }
-    public function Search(CreateReceiptsRequest $request)
+    public function search(Request $request)
     {
         $selectP = $request->input('p_name');
         $selectAid = $request->input('a_name');
-        $receipts = Receipt::Search($selectP,$selectAid)->get();
+        $receipts = Receipt::search($selectP,$selectAid)->get();
         $p_name = Receipt::allPname()->get();
         $a_name = Reward::search()->get();
 

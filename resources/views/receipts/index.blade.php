@@ -3,7 +3,7 @@
 @section('theme','所有發票資料')
 @section('body')
 <a style="color: gold" href="{{route('receipts.create')}}">新增一筆發票</a>
-{!! Form::open(['url'=>'receipts/Search','method' => 'POST']) !!}
+{!! Form::open(['url'=>'receipts/search']) !!}
 {!! Form::Label('p_name','期數 : ') !!}
 {!! Form::select('p_name',$p_name,$selectP) !!}
 <br/>

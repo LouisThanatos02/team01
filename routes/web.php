@@ -33,7 +33,7 @@ Route::post('receipts/store', [ReceiptsController::class,'store'])->name('receip
 //顯示單筆-----------------------------------------------
 Route::get('receipts/{id}', [ReceiptsController::class,'show'])->where('id','[0-9]+')->name('receipts.show');
 //顯示特定---------------------------------------------------
-Route::post('receipts/Search', [ReceiptsController::class,'Search'])->name('receipts.store');
+Route::post('receipts/search', [ReceiptsController::class,'search'])->name('receipts.search');
 
 //修改--------------------------------------------------
 Route::get('receipts/{id}/edit', [ReceiptsController::class,'edit'])->where('id','[0-9]+')->name('receipts.edit');
