@@ -15,10 +15,20 @@
     </style>
 
     <style>
+        html{
+            background-color: lightcyan;
+        }
         body {
+            width: 600px;
+            margin: 0 auto;
+            background-color: whitesmoke;
+            padding: 0 20px 20px 20px;
+            border: 5px solid gray;
             font-family: 'Nunito';
         }
+
     </style>
+
 </head>
 <body>
 <table class="text-center" border="1" align="center">
