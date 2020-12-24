@@ -21,9 +21,15 @@
     </style>
 </head>
 <body>
-@include('header')
-<h1>@yield('theme')</h1>
-    @yield('body')
-@include('footer')
+<table class="text-center" border="1" align="center">
+    <tr>
+        <td>
+            @include('header')
+            <h1>@yield('theme')</h1>
+            @yield('body')
+            @include('footer')
+        </td>
+    </tr>
+</table>
 </body>
 </html>

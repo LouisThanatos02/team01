@@ -20,6 +20,9 @@ class Reward extends Model
         $quarry->select('rewards.id','rewards.a_name')
             ->orderBy('rewards.id','asc');
     }
-
+    public function receipts()
+    {
+        return $this->hasMany('App\Models\Receipt','a_ID');
+    }
 
 }

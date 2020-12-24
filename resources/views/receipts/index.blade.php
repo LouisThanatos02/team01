@@ -2,16 +2,24 @@
 @section('title','發票資料')
 @section('theme','所有發票資料')
 @section('body')
-<a style="color: gold" href="{{route('receipts.create')}}">新增一筆發票</a>
-{!! Form::open(['url'=>'receipts/search']) !!}
-{!! Form::Label('p_name','期數 : ') !!}
-{!! Form::select('p_name',$p_name,$selectP) !!}
-<br/>
-{!! Form::Label('a_name','獎項 : ') !!}
-{!! Form::select('a_name',$a_name,$selectAid) !!}
-{!! Form::submit('查詢') !!}
-{!! Form::close() !!}
-<table class="text-center"  border="1" >
+    <table class="text-center" border="1" align="center">
+        <tr>
+            <td>
+                <a style="color: gold" href="{{route('receipts.create')}}">新增一筆發票</a>
+                {!! Form::open(['url'=>'receipts/search']) !!}
+
+                {!! Form::Label('p_name','期數 : ') !!}
+                {!! Form::select('p_name',$p_name,$selectP) !!}
+                <br/>
+                {!! Form::Label('a_name','獎項 : ') !!}
+                {!! Form::select('a_name',$a_name,$selectAid) !!}
+                <br/>
+                {!! Form::submit('查詢') !!}
+                {!! Form::close() !!}
+            </td>
+        </tr>
+    </table>
+    <table class="text-center" border="1" align="center">
     <tr>
         <td style="color: crimson">編號</td>
         <td style="color: deepskyblue">期數</td>

@@ -15,6 +15,11 @@ class Receipt extends Model
         'created_at',
         'updated_at'
     ];
+    public function rewards()
+    {
+        return $this->belongsTo('App\Models\Reward','a_ID','id');
+    }
+
     public function scopeSearchAll($query)
     {
         $query->join('rewards','receipts.a_ID','=','rewards.id')
