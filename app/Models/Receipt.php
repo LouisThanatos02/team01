@@ -15,7 +15,7 @@ class Receipt extends Model
         'created_at',
         'updated_at'
     ];
-    public function rewards()
+    public function receipts()
     {
         return $this->belongsTo('App\Models\Reward','a_ID','id');
     }

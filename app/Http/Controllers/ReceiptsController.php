@@ -192,5 +192,32 @@ class ReceiptsController extends Controller
                 ]);
         }
     }
+    public function api_updata(Request $request)
+    {
+        $receipt = Receipt::find($request->input('id'));
+        if ($receipt == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
 
+        $receipt->period_name = $request->input('p_name');
+        $receipt->a_id = $request->input('a_id');
+        $receipt->number = $request->input('number');
+        if ($receipt->save())
+        {
+            return response()->json([
+                'status' => 1,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+    }
+    public function api_create(Request $request)
+    {
+
+    }
 }

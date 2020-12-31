@@ -89,4 +89,32 @@ class RewardsController extends Controller
                 ]);
         }
     }
+    public function api_updata(Request $request)
+    {
+        $reward = Reward::find($request->input('id'));
+        if ($reward == null)
+        {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+
+        $reward->a_name = $request->input('a_name');
+        $reward->rule = $request->input('rule');
+        $reward->money = $request->input('money');
+        if ($reward->save())
+        {
+            return response()->json([
+                'status' => 1,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+    }
+    public function api_create(Request $request)
+    {
+
+    }
 }
