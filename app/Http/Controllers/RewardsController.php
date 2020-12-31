@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateRewardsRequest;
+use App\Models\Receipt;
 use App\Models\Reward;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -63,5 +64,29 @@ class RewardsController extends Controller
         $rewards=Reward::findOrFail($id);
         $rewards->delete();
         return redirect('rewards');
+    }
+    public function api_rewards()
+    {
+        return Reward::all();
+    }
+    public function api_delete(Request $request)
+    {
+        $reward = Reward::find($request->input('id'));
+
+        if($reward == null)
+        {
+            return response()
+                ->json([
+                    'status'=>0,
+                ]);
+        }
+
+        if($reward->delete())
+        {
+            return response()
+                ->json([
+                    'status'=>1,
+                ]);
+        }
     }
 }

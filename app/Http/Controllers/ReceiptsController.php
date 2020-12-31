@@ -168,5 +168,29 @@ class ReceiptsController extends Controller
             return view('receipts.index',['receipts'=>$receipts,'lestID' => $lestId,'p_name'=>$pname_data,'a_name' => $aname_data
                                                 ,'selectP' => $selectP,'selectAid'=>$selectAid]);
     }
+    public function api_receipts()
+    {
+        return Receipt::all();
+    }
+    public function api_delete(Request $request)
+    {
+        $receipt = Receipt::find($request->input('id'));
+
+        if($receipt == null)
+        {
+            return response()
+                ->json([
+                    'status'=>0,
+                ]);
+        }
+
+        if($receipt->delete())
+        {
+            return response()
+                ->json([
+                    'status'=>1,
+                ]);
+        }
+    }
 
 }
