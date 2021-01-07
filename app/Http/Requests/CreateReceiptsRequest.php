@@ -26,7 +26,7 @@ class CreateReceiptsRequest extends FormRequest
         return [
             'p_name' => 'required|string|min:7',
             'a_id' => 'required',
-            'number' => 'required|string|min:7|max:8',
+            'number' => 'required|string|numChack:a_id',
         ];
     }
     public function messages()
@@ -35,8 +35,7 @@ class CreateReceiptsRequest extends FormRequest
             'p_name.required' => '期數欄位必填',
             'p_name.min' => '期數最少須輸入7位',
             'number.required' => '號碼欄位必填',
-            'number.min'=>'號碼最少須輸入3位',
-            'number.max'=>'號碼最多輸入8位',
+            'number.numChack'=> '號碼只能輸入位',
         ];
     }
 }

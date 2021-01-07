@@ -1,8 +1,12 @@
 @extends('app')
 @section('title','獎勵資料')
-@section('theme','這是顯示所有獎勵表單的 view')
+@section('theme','所有獎勵列表')
 @section('body')
-<a style="color: gold" href="{{route('rewards.create')}}">新增一筆獎勵</a>
+    <table  align="center" bgcolor="black" width="100%">
+        <tr><td>
+            <a style="color: darkturquoise" href="{{route('rewards.create')}}">新增一筆獎勵</a>
+            </td></tr>
+    </table>
 <table class="text-center">
     <tr>
         <td style="color: crimson;">編號</td>

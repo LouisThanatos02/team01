@@ -2,15 +2,18 @@
 @section('title','發票資料')
 @section('theme','所有發票資料')
 @section('body')
-    <table class="text-center" align="center">
+    <table class="text-center" align="center" width="100%">
         <tr>
-            <td>
+            <td bgcolor="black">
                 <a style="color:darkturquoise" href="{{route('receipts.create')}}">新增一筆發票</a>
-                {!! Form::open(['url'=>'receipts/search']) !!}
+
             </td>
         </tr>
+    </table>
+    <table align="center">
         <tr>
             <td>
+                {!! Form::open(['url'=>'receipts/search']) !!}
                 {!! Form::Label('p_name','期數 : ') !!}
                 {!! Form::select('p_name',$p_name,$selectP) !!}
                 <br/>

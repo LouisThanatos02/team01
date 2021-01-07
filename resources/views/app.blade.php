@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -33,6 +34,10 @@
         input{
             background-color: gold;
             border: 2px solid dodgerblue;
+        }
+        .bt_1{
+            background-color: violet;
+            border: 2px solid goldenrod;
         }
     </style>
 
