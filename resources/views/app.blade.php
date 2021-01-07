@@ -34,7 +34,7 @@
 
         }
         input{
-            height: 25px;
+            height: 20px;
             background-color: gold;
             border: 2px solid dodgerblue;
             color: dodgerblue;
@@ -46,7 +46,7 @@
         }
         select {
             width: 100%;
-            height: 25px;
+            height: 20px;
             color: dodgerblue;
             background-color: gold;
             border: 2px solid dodgerblue;
