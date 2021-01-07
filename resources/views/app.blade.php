@@ -19,6 +19,7 @@
         html{
             background-color: black;
         }
+
         body {
             width: 600px;
             margin: 0 auto;
@@ -29,29 +30,42 @@
         }
         table {
             align:center;
+            /*border: 2px solid gold;*/
 
         }
         input{
+            height: 25px;
             background-color: gold;
             border: 2px solid dodgerblue;
+            color: dodgerblue;
         }
         .bt_1{
-            background-color: violet;
+            background-color: darkslategray;
             border: 2px solid goldenrod;
+            color: gold;
+        }
+        select {
+            width: 100%;
+            height: 25px;
+            color: dodgerblue;
+            background-color: gold;
+            border: 2px solid dodgerblue;
+
         }
     </style>
 
 </head>
 <body>
 <table class="text-center" align="center">
-    <tr>
-        <td>
-            @include('header')
-            <h1>@yield('theme')</h1>
-            @yield('body')
-
-        </td>
-    </tr>
+    <div>
+        <tr>
+            <td>
+                @include('header')
+                <h1>@yield('theme')</h1>
+                @yield('body')
+            </td>
+        </tr>
+    </div>
 </table>
 @include('footer')
 </body>

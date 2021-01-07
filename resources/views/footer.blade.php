@@ -1,5 +1,5 @@
 <hr size="4px" width="100%" color="black"/>
-<table class="text-center" align="center" bgcolor="gray">
+<table class="text-center" align="center">
     <tr>
         <td>
             {!! Form::open(['url'=>'receipts','method'=>'GET']) !!}
