@@ -15,7 +15,7 @@ class ReceiptsController extends Controller
     {
         $selectP = null;
         $selectAid = null;
-        $receipts = Receipt::searchall()->get();
+        $receipts = Receipt::all();
         $p_name = Receipt::allPname()->get();
         $a_name = Reward::search()->get();
 
@@ -38,7 +38,8 @@ class ReceiptsController extends Controller
 
         $temp = $receipts->toArray();
         $lestId = end($temp);
-        foreach ($lestId as $lestId)
+        //foreach ($lestId as $lestId)
+        //return ['receipts'=>$receipts];
         return view('receipts.index',['receipts'=>$receipts,'lestID' => $lestId,'p_name' => $pname_data,'a_name' => $aname_data,
                                             'selectP' => $selectP,'selectAid'=>$selectAid]);
     }
@@ -55,9 +56,9 @@ class ReceiptsController extends Controller
     }
     public function show($id)
     {
-        $receipt = Receipt::searchone($id)->get();
-
-        return view('receipts.show',['receipt'=>$receipt]);
+        $receipts = Receipt::findOrFail($id);
+        //return ['receipt'=>$receipt];
+        return view('receipts.show',['receipts'=>$receipts]);
     }
     public function edit($id)
     {

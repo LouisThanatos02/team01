@@ -13,11 +13,12 @@
             <td style="color: deepskyblue">期數</td>
             <td style="color: steelblue">號碼</td>
         </tr>
-        @foreach($receipts as $receipt )
+        @foreach($receipts as $receipt)
             <tr>
                 <td>{{$receipt->id}}</td>
                 <td>{{substr($receipt->period_name,0,3)}}｜{{substr($receipt->period_name,3)}}</td>
                 <td>{{$receipt->number}}</td>
             </tr>
     @endforeach
+    </table>
 @endsection

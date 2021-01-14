@@ -15,17 +15,17 @@ class Receipt extends Model
         'created_at',
         'updated_at'
     ];
-    public function receipts()
+    public function reward()
     {
         return $this->belongsTo('App\Models\Reward','a_ID','id');
     }
 
-    public function scopeSearchAll($query)
+    /*public function scopeSearchAll($query)
     {
         $query->join('rewards','receipts.a_ID','=','rewards.id')
             ->orderBy("receipts.id")
             ->select('receipts.id','receipts.period_name as p_name','rewards.a_name','receipts.number','receipts.a_ID');
-    }
+    }*/
     public function scopeSearchOne($query,$id)
     {
         $query->join('rewards','receipts.a_ID','=','rewards.id')

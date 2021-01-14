@@ -37,8 +37,8 @@
     @foreach($receipts as $receipt )
         <tr>
             <td>{{$receipt->id}}</td>
-            <td>{{substr($receipt->p_name,0,3)}}｜{{substr($receipt->p_name,3)}}</td>
-            <td>{{$receipt->a_name}}</td>
+            <td>{{substr($receipt->period_name,0,3)}}｜{{substr($receipt->period_name,3)}}</td>
+            <td>{{$receipt->reward->a_name}}</td>
             <td>{{$receipt->number}}</td>
 
             <td>

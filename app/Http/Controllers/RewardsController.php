@@ -23,6 +23,7 @@ class RewardsController extends Controller
     {
         $reward = Reward::findOrFail($id);
         $receipts = $reward->receipts;
+        //return $reward;
         return view('rewards.show',['reward'=>$reward,'receipts'=>$receipts]);
     }
     public function edit($id)
